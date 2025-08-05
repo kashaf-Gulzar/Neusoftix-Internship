@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     });
@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(
               '../android/assets/images/carrot.png', 
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 200,
             ),
             
             Column(
@@ -41,15 +41,18 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   'nectar',
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 60,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
+              
+
                 Text(
                   'online groceriet', 
                   style: TextStyle(
-                    fontSize: 15,
+                    fontFamily:'Gilroy',
+                    fontSize: 25,
                     color: Colors.white,
                   ),
                 ),
