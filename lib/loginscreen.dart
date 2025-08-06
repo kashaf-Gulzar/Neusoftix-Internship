@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl_phone_field/intl_phone_field.dart'; 
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:my_first_project/phonenumberscreen.dart'; 
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -50,23 +51,35 @@ class LoginScreen extends StatelessWidget {
   ),
 ),
 
-              const SizedBox(height: 30),
+  const SizedBox(height: 30),
 
    Padding(
   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+  child:GestureDetector(
+onTap: () => {
+  Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Phonenumberscreen()),
+      ),
+},
+  
+  child: AbsorbPointer(
   child: IntlPhoneField(
     decoration: const InputDecoration(
-      labelText: 'Phone Number',
+      labelText: 'Mobile Number',
       border: OutlineInputBorder(
         borderSide: BorderSide(),
       ),
     ),
     initialCountryCode: 'PK', 
+    keyboardType: TextInputType.number,
     onChanged: (phone) {
       print(phone.completeNumber); 
     },
   ),
+  ),
 ),
+   ),
               const SizedBox(height: 30),
 
               Text('Or connect with social media', style: TextStyle(
@@ -89,7 +102,7 @@ class LoginScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               minimumSize: Size(400, 67),
                     padding: EdgeInsets.all(12),
-              backgroundColor:  const Color.fromARGB(255, 24, 119, 197),
+              backgroundColor:  const Color(0xFF5383EC),
               shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
               )
@@ -111,7 +124,7 @@ class LoginScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               minimumSize: Size(400, 67),
                     padding: EdgeInsets.all(12),
-              backgroundColor:  const Color.fromARGB(255, 20, 85, 138),
+              backgroundColor:  const Color(0xFF4A66AC),
               shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
               )

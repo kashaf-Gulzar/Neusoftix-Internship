@@ -76,29 +76,26 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 SizedBox(height: 40),
-                GestureDetector(
-  onTap: () {
+               ElevatedButton(
+  onPressed: () {
     print("Get Started button clicked");
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return const LoginScreen();
     }));
   },
-  child: ElevatedButton(
-    onPressed: null, 
-    style: ElevatedButton.styleFrom(
-      backgroundColor:  Colors.green,
-      padding: EdgeInsets.all(12),
-      minimumSize: Size(353, 67),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.green,
+    padding: const EdgeInsets.all(12),
+    minimumSize: const Size(353, 67),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
     ),
-    child: const Text(
-      'Get Started',
-      style: TextStyle(
-        fontSize: 18,
-        color: Colors.white,
-      ),
+  ),
+  child: const Text(
+    'Get Started',
+    style: TextStyle(
+      fontSize: 18,
+      color: Colors.white,
     ),
   ),
 ),
