@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 20),
                ElevatedButton(
   onPressed: () {
     print("Get Started button clicked");

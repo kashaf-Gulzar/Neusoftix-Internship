@@ -86,7 +86,7 @@ class Selectlocation extends StatelessWidget {
   style: ElevatedButton.styleFrom(
     backgroundColor: Colors.green,
     padding: const EdgeInsets.all(12),
-    minimumSize: const Size(400, 67),
+    minimumSize: const Size(350, 67),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(15),
     ),

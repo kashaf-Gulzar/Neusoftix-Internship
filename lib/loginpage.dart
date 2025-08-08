@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_project/homescreen.dart';
+import 'package:my_first_project/signupscreen.dart';
 
 class Loginpage extends StatelessWidget {
   const Loginpage({super.key});
@@ -6,71 +8,133 @@ class Loginpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 50), 
-            Image.asset(
-              '../android/assets/images/carrot.png',
-              height: 300 ,color: Colors.red,
+            Center(
+              child: Image.asset(
+                '../android/assets/images/carrot.png',
+                height: 200,
+                color: Colors.red,
+              ),
             ),
-            const SizedBox(height: 20),
-           
-            
-                const Text(
-                  'Login',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                
-                  ),
-                ),
-          const SizedBox(height: 20),
+            const SizedBox(height: 30),
 
-          
             const Text(
-              'Enter your Email and Password',
-              textAlign: TextAlign.left,
+              'Login',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            const Text(
+              'Enter your email and password',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey
+                color: Colors.grey,
               ),
             ),
-             const SizedBox(height: 80),
 
-             
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  
-                  decoration: const InputDecoration(
-                   
-                    labelText: 'Email',
-                    hintText: 'Enter your Email ',
-                    border: OutlineInputBorder(),
-                   
+            const SizedBox(height: 40),
+
+            TextFormField(
+              decoration: const InputDecoration(
+                suffixIcon: Icon(Icons.check_outlined, color: Colors.green),
+                labelText: 'Email',
+                hintText: 'Enter your Email',
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            TextFormField(
+              obscureText: true,
+              decoration: const InputDecoration(
+                
+                labelText: 'Password',
+                hintText: 'Enter your Password',
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'Forgot Password?',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Homescreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: const EdgeInsets.all(12),
+                  minimumSize: const Size(400, 67),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+            ),
 
-              const SizedBox(height: 40),
+            const SizedBox(height: 20),
 
-              
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    
-                    labelText: 'Password',
-                    hintText: 'Enter your Password',
-                    border: OutlineInputBorder(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Don't have an account?",
+                  style: TextStyle(fontSize: 20),
+                ),
+                TextButton(
+                  onPressed: () {
+                     Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Signupscreen(),
+                    ),
+                  );
+                  },
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-           
+              ],
+            ),
           ],
         ),
       ),

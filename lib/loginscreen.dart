@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
   const SizedBox(height: 30),
 
    Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
   child:GestureDetector(
 onTap: () => {
   Navigator.push(
@@ -91,7 +91,7 @@ onTap: () => {
           ElevatedButton.icon(
             onPressed: () {}, 
             icon: Padding(
-    padding: EdgeInsets.only(right: 30), 
+    padding: EdgeInsets.only(right: 20), 
     child: Icon(FontAwesomeIcons.google, color: Colors.white, size: 30),
   ), 
             label: Text('Continue with Google', style: TextStyle(
@@ -100,7 +100,7 @@ onTap: () => {
               color: Colors.white,
             ),),
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(400, 67),
+              minimumSize: Size(350, 67),
                     padding: EdgeInsets.all(12),
               backgroundColor:  const Color(0xFF5383EC),
               shape: RoundedRectangleBorder(
@@ -113,7 +113,7 @@ onTap: () => {
           ElevatedButton.icon(
             onPressed: () {}, 
             icon: Padding(
-    padding: EdgeInsets.only(right: 30), 
+    padding: EdgeInsets.only(right: 25), 
     child: Icon(FontAwesomeIcons.facebook, color: Colors.white, size: 30),
   ),
             label: Text('Continue with Facebook', style: TextStyle(
@@ -122,7 +122,7 @@ onTap: () => {
               color: Colors.white,
             ),),
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(400, 67),
+              minimumSize: Size(350, 67),
                     padding: EdgeInsets.all(12),
               backgroundColor:  const Color(0xFF4A66AC),
               shape: RoundedRectangleBorder(
