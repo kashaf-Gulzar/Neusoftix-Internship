@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:my_first_project/main.dart';
+import 'package:my_first_project/onboarding.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => Onboarding()));
     });
   }
 
@@ -33,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 100,
               height: 200,
             ),
+             
             
             Column(
               mainAxisSize: MainAxisSize.min, 
@@ -46,12 +47,11 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: Colors.white,
                   ),
                 ),
-              
-
+              const SizedBox(height:4),
                 Text(
                   'online groceriet', 
                   style: TextStyle(
-                    fontFamily:'Gilroy',
+                    fontFamily:'GilroyB',
                     fontSize: 25,
                     color: Colors.white,
                   ),

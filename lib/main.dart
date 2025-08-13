@@ -1,109 +1,25 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_first_project/loginscreen.dart';
-import 'package:my_first_project/splash_screen.dart';
+import 'package:my_first_project/onboarding.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+  DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(), // Wrap your app
+  ),
+);
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          
-          Positioned.fill(
-            child: Image.asset(
-              '../android/assets/images/welcome.jpg', 
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          
-          SafeArea(
-            child: Column(
-              
-              mainAxisAlignment: MainAxisAlignment.end, 
-              
-              children: [
-                Image.asset( '../android/assets/images/carrot.png', 
-              width: 60,
-              height: 60,),
-                const SizedBox(height: 8), 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Welcome \n to our Store',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Get your groceries in as fast as one hour',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-               ElevatedButton(
-  onPressed: () {
-    print("Get Started button clicked");
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-      return const LoginScreen();
-    }));
-  },
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.green,
-    padding: const EdgeInsets.all(12),
-    minimumSize: const Size(353, 67),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
-  ),
-  child: const Text(
-    'Get Started',
-    style: TextStyle(
-      fontSize: 18,
-      color: Colors.white,
-    ),
-  ),
-),
-               ],
-            ),
-          ),
-        ],
-      ),
+    return MaterialApp(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: Onboarding(),
     );
   }
 }
+

@@ -31,7 +31,11 @@ class Phonenumberscreen extends StatelessWidget {
             IntlPhoneField(
               decoration: const InputDecoration(
                 labelText: 'Mobile Number',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                 borderSide: BorderSide.none,
+
+
+                ),
               ),
               initialCountryCode: 'PK',
               onChanged: (phone) {
