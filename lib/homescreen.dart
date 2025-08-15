@@ -15,12 +15,12 @@ class _HomeScreenState extends State<Homescreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
@@ -30,7 +30,6 @@ class _HomeScreenState extends State<Homescreen> {
                       height: 50,
                     ),
                     const SizedBox(height: 8),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -48,11 +47,10 @@ class _HomeScreenState extends State<Homescreen> {
                     ),
                   ],
                 ),
-              ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: TextField(
+                const SizedBox(height: 12),
+
+                TextField(
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search),
                     hintText: "Search Store",
@@ -64,13 +62,10 @@ class _HomeScreenState extends State<Homescreen> {
                     ),
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 15),
+                const SizedBox(height: 15),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Container(
+                Container(
                   height: 150,
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 238, 230, 203),
@@ -96,14 +91,12 @@ class _HomeScreenState extends State<Homescreen> {
                             ),
                             image: DecorationImage(
                               image: AssetImage(
-                                '../android/assets/images/fruit.png',
-                              ),
+                                  '../android/assets/images/fruit.png'),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-
                       Expanded(
                         flex: 1,
                         child: Padding(
@@ -129,7 +122,6 @@ class _HomeScreenState extends State<Homescreen> {
                                 ),
                               ),
                               const Spacer(),
-
                               Row(
                                 children: [
                                   Container(
@@ -168,241 +160,102 @@ class _HomeScreenState extends State<Homescreen> {
                     ],
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Exclusive Offer",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text("See all", style: TextStyle(color: Colors.green)),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
+                sectionHeader("Exclusive Offer"),
+                productGrid([
+                  productCard(
+                    "../android/assets/images/Apple.png",
+                    "Fresh Apples",
+                    "1kg",
+                    "\$4.99",
+                    "Apples are nutritious. Apples may be good for weight loss...",
+                    context,
+                  ),
+                  productCard(
+                    "../android/assets/images/banana.jpeg",
+                    "Bananas",
+                    "1 Dozen",
+                    "\$2.99",
+                    "Bananas are nutritious, potassium-rich...",
+                    context,
+                  ),
+                ]),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: 0.75,
-                  children: [
-                    productCard(
-                      "../android/assets/images/Apple.png",
-                      "Fresh Apples",
-                      "1kg",
-                      "\$4.99",
-                      "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healthful and varied diet.",
-                      context,
-                    ),
-                    productCard(
-                      "../android/assets/images/banana.jpeg",
-                      "Bananas",
-                      "1 Dozen",
-                      "\$2.99",
-                      "Bananas are a nutritious, potassium-rich fruit with a naturally sweet flavor, enjoyed globally. They offer sustained energy and are a good source of fiber, vitamins B6 and C. Bananas are versatile, consumed fresh, in desserts, or as a staple food in some regions. ",
-                      context,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Best Selling",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text("See all", style: TextStyle(color: Colors.green)),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
+                sectionHeader("Best Selling"),
+                productGrid([
+                  productCard(
+                    "../android/assets/images/tomato.png",
+                    "Tomatoes",
+                    "1kg",
+                    "\$3.49",
+                    "Tomatoes are versatile fruits...",
+                    context,
+                  ),
+                  productCard(
+                    "../android/assets/images/Ginger.png",
+                    "Ginger",
+                    "1kg",
+                    "\$9.99",
+                    "Ginger is a flowering plant's rhizome...",
+                    context,
+                  ),
+                ]),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: 0.75,
-                  children: [
-                    productCard(
-                      "../android/assets/images/tomato.png",
-                      "Tomatoes",
-                      "1kg",
-                      "\$3.49",
-                      "Tomatoes are versatile fruits, often used as vegetables, known for their rich flavor and vibrant red color. They are a good source of vitamins C and A, potassium, and the antioxidant lycopene. ",
-                      context,
-                    ),
-                    productCard(
-                      "../android/assets/images/Ginger.png",
-                      "Ginger",
-                      "1kg",
-                      "\$9.99",
-                      "Ginger is a flowering plant's rhizome (root) used as a spice and folk medicine. It has a peppery, slightly sweet flavor and a pungent aroma, with uses ranging from culinary additions to remedies for nausea and inflammation",
-                      context,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Groceries",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text("See all", style: TextStyle(color: Colors.green)),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
+                sectionHeader("Groceries"),
+                Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.orange.shade50,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              '../android/assets/images/pulses.png',
-                              height: 50,
-                              width: 50,
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(width: 8),
-                            const Text(
-                              "Pulses",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
+                      child: groceryCard(
+                        '../android/assets/images/pulses.png',
+                        "Pulses",
+                        Colors.orange.shade50,
                       ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.green.shade50,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              '../android/assets/images/Rice.png',
-                              height: 50,
-                              width: 50,
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(width: 8),
-                            const Text(
-                              "Rice",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
+                      child: groceryCard(
+                        '../android/assets/images/Rice.png',
+                        "Rice",
+                        Colors.green.shade50,
                       ),
                     ),
                   ],
                 ),
-              ),
 
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  childAspectRatio: 0.75,
-                  children: [
-                    productCard(
-                      "../android/assets/images/Meat.png",
-                      "Beef",
-                      "1kg",
-                      "\$4.99",
-                      "Meat products are defined as edible animal tissues, including skeletal muscle and associated parts, that have undergone processing like cooking, salting, or smoking. They can range from fresh cuts to processed items like sausages and cured meats. ",
-                      context,
-                    ),
-                    productCard(
-                      "../android/assets/images/Chicken.png",
-                      "Chicken",
-                      "1 Kg",
-                      "\$2.99",
-                      "Chicken products are versatile and nutritious, including various cuts like breasts, thighs, and wings, and are a great source of protein and essential nutrients. They are generally more affordable than red meat and fish. ",
-                      context,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+                const SizedBox(height: 10),
+                productGrid([
+                  productCard(
+                    "../android/assets/images/Meat.png",
+                    "Beef",
+                    "1kg",
+                    "\$4.99",
+                    "Meat products are defined as edible animal tissues...",
+                    context,
+                  ),
+                  productCard(
+                    "../android/assets/images/Chicken.png",
+                    "Chicken",
+                    "1 Kg",
+                    "\$2.99",
+                    "Chicken products are versatile and nutritious...",
+                    context,
+                  ),
+                ]),
+              ],
+            ),
           ),
         ),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           if (index == 1) {
-            
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ExploreScreen()),
-            );
-          } else if (index == 2) {
-           
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Homescreen()),
-            );
-          } else if (index == 3) {
-            
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Homescreen()),
-            );
-          } else if (index == 4) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Homescreen()),
             );
           }
         },
@@ -427,22 +280,47 @@ class _HomeScreenState extends State<Homescreen> {
   }
 }
 
-Widget categoryCard(String image, String title) {
+Widget sectionHeader(String title) {
   return Padding(
-    padding: const EdgeInsets.only(right: 12.0),
-    child: Column(
+    padding: const EdgeInsets.symmetric(vertical: 10.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Image.asset(image),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 5),
-        Text(title),
+        const Text("See all", style: TextStyle(color: Colors.green)),
+      ],
+    ),
+  );
+}
+
+Widget productGrid(List<Widget> products) {
+  return GridView.count(
+    crossAxisCount: 2,
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
+    childAspectRatio: 0.75,
+    children: products,
+  );
+}
+
+Widget groceryCard(String image, String title, Color bgColor) {
+  return Container(
+    padding: const EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      color: bgColor,
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Row(
+      children: [
+        Image.asset(image, height: 50, width: 50, fit: BoxFit.cover),
+        const SizedBox(width: 8),
+        Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
       ],
     ),
   );
@@ -506,7 +384,8 @@ Widget productCard(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Icon(Icons.add, color: Colors.white, size: 20),
+                  child:
+                      const Icon(Icons.add, color: Colors.white, size: 20),
                 ),
               ],
             ),

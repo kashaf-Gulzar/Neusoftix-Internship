@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_project/beveragespage.dart';
+import 'package:my_first_project/dairyeggs.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -15,7 +17,6 @@ class ExploreScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -31,7 +32,6 @@ class ExploreScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -39,47 +39,55 @@ class ExploreScreen extends StatelessWidget {
               mainAxisSpacing: 10,
               padding: const EdgeInsets.all(8),
               children: [
-                productCategory('Fresh Fruits & Vegetable',
-                    '../android/assets/images/fruit.png', Colors.green.shade50),
-                productCategory('Cooking Oil & Ghee',
-                    '../android/assets/images/oil.png', Colors.orange.shade50),
-                productCategory('Meat & Fish',
-                    '../android/assets/images/fish.png', Colors.red.shade50),
-                productCategory('Bakery & Snacks',
-                    '../android/assets/images/bakery.png', Colors.purple.shade50),
-                productCategory('Dairy & Eggs',
-                    '../android/assets/images/egg.png', Colors.yellow.shade50),
-                productCategory('Beverages',
-                    '../android/assets/images/Beverages.png', Colors.blue.shade50),
-                    productCategory('Seafood',
-                    '../android/assets/images/seafoodpreview.png', Colors.pinkAccent.shade100),
-                    productCategory('Junk Food',
-                    '../android/assets/images/junkfoodpreview.png', Colors.deepPurple.shade100),
+                productCategory(context, 'Fresh Fruits & Vegetable',
+                    '../android/assets/images/fruit.png', Colors.green.shade50, null),
+                productCategory(context, 'Cooking Oil & Ghee',
+                    '../android/assets/images/oil.png', Colors.orange.shade50, null),
+                productCategory(context, 'Meat & Fish',
+                    '../android/assets/images/fish.png', Colors.red.shade50, null),
+                productCategory(context, 'Bakery & Snacks',
+                    '../android/assets/images/bakery.png', Colors.purple.shade50, null),
+                productCategory(context, 'Dairy & Eggs',
+                    '../android/assets/images/egg.png', Colors.yellow.shade50, const Dairyeggs()),
+                productCategory(context, 'Beverages',
+                    '../android/assets/images/Beverages.png', Colors.blue.shade50, const BeveragesPage()),
+                productCategory(context, 'Seafood',
+                    '../android/assets/images/seafoodpreview.png', Colors.pinkAccent.shade100, null),
+                productCategory(context, 'Junk Food',
+                    '../android/assets/images/junkfoodpreview.png', Colors.deepPurple.shade100, null),
               ],
             ),
           ),
         ],
       ),
-      
     );
-
   }
 
-  Widget productCategory(String title, String imgPath, Color bgColor) {
-    return Container(
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(imgPath, height: 100),
-          const SizedBox(height: 8),
-          Text(title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
-        ],
+  Widget productCategory(BuildContext context, String title, String imgPath, Color bgColor, Widget? page) {
+    return InkWell(
+      onTap: () {
+        if (page != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        }
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(imgPath, height: 100),
+            const SizedBox(height: 8),
+            Text(title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
       ),
     );
   }
