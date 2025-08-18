@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_project/accountscreen.dart';
+import 'package:my_first_project/cartscreen.dart';
 import 'package:my_first_project/explorescreen.dart';
+import 'package:my_first_project/loginscreen.dart';
 import 'package:my_first_project/productdetail.dart';
-
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
   @override
@@ -249,33 +251,40 @@ class _HomeScreenState extends State<Homescreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ExploreScreen()),
-            );
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Shop'),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Account',
-          ),
-        ],
-      ),
+  selectedItemColor: Colors.green,
+  unselectedItemColor: Colors.grey,
+  onTap: (index) {
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ExploreScreen()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CartScreen(items: [])), 
+      );
+    } else if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()), 
+      );
+    } else if (index == 4) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AccountScreen()),
+      );
+    }
+  },
+  items: const [
+    BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Shop'),
+    BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: 'Favorite'),
+    BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
+  ],
+),
+
     );
   }
 }

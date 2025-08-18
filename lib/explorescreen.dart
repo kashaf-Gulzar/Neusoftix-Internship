@@ -5,6 +5,26 @@ import 'package:my_first_project/dairyeggs.dart';
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
 
+  void _handleSearch(BuildContext context, String query) {
+    query = query.toLowerCase().trim();
+
+    if (query.contains("dairy") || query.contains("egg")) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Dairyeggs()),
+      );
+    } else if (query.contains("beverage")) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const BeveragesPage()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("No page found for this search")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +50,7 @@ class ExploreScreen extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
               ),
+              onSubmitted: (value) => _handleSearch(context, value),
             ),
           ),
           Expanded(
@@ -63,7 +84,8 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 
-  Widget productCategory(BuildContext context, String title, String imgPath, Color bgColor, Widget? page) {
+  Widget productCategory(BuildContext context, String title, String imgPath,
+      Color bgColor, Widget? page) {
     return InkWell(
       onTap: () {
         if (page != null) {

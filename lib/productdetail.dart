@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_project/cartitem.dart';
+import 'package:my_first_project/cartscreen.dart';
 import 'package:my_first_project/loginpage.dart';
+import 'package:my_first_project/loginscreen.dart';
 
 class ProductDetail extends StatefulWidget {
   final String image;
@@ -171,32 +174,42 @@ class _ProductDetailState extends State<ProductDetail> {
 
           const Spacer(),
 
-          FilledButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Loginpage(),
-                ),
-              );
-            },
-            style: FilledButton.styleFrom(
-              backgroundColor: Colors.green,
-              padding: const EdgeInsets.all(12),
-              minimumSize: const Size(350, 67),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            child: const Text(
-              'Add to Basket',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
+       FilledButton(
+  onPressed: () {
+    final cartItem = CartItem(
+      image: widget.image,
+      name: widget.name,
+      quantity: widget.quantity,
+      price: double.parse(widget.price.replaceAll("\$", "")), // "$4.99" -> 4.99
+      count: quantityCount,
+    );
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CartScreen(items: [cartItem]),
+      ),
+    );
+  },
+  style: FilledButton.styleFrom(
+    backgroundColor: Colors.green,
+    padding: const EdgeInsets.all(12),
+    minimumSize: const Size(350, 67),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+  ),
+  child: const Text(
+    'Add to Basket',
+    style: TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  ),
+),
+
+
 
           const SizedBox(height: 20),
         ],
