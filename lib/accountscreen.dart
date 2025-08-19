@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_project/cartscreen.dart';
+import 'package:my_first_project/explorescreen.dart';
+import 'package:my_first_project/loginscreen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -6,7 +9,16 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+    icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  ),
+  backgroundColor: Colors.white,
+  elevation: 0,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -17,8 +29,7 @@ class AccountScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 const CircleAvatar(
                   radius: 35,
-                  backgroundImage: NetworkImage(
-                      "https://i.pravatar.cc/150?img=3"), 
+                  
                 ),
                 const SizedBox(width: 15),
                 Column(
@@ -52,7 +63,6 @@ class AccountScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // Options List
             Expanded(
               child: ListView(
                 children: [
@@ -67,27 +77,34 @@ class AccountScreen extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green.shade50,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        elevation: 0,
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "Log Out",
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
+  padding: const EdgeInsets.symmetric(horizontal: 20),
+  child: FilledButton.icon(
+    style: FilledButton.styleFrom(
+      backgroundColor: Colors.green.shade50,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+      elevation: 0,
+    ),
+    onPressed: () {},
+    icon: const Icon(
+      Icons.logout,
+      color: Colors.green,
+      size: 20,
+    ),
+    
+    label: const Text(
+      "Log Out",
+      style: TextStyle(
+        color: Colors.green,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
+    ),
+  ),
+),
+
                   const SizedBox(height: 20),
                 ],
               ),
@@ -96,35 +113,41 @@ class AccountScreen extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 4,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.storefront_outlined),
-            label: "Shop",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore_outlined),
-            label: "Explore",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: "Cart",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: "Favourite",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: "Account",
-          ),
-        ],
-      ),
+     bottomNavigationBar: BottomNavigationBar(
+  selectedItemColor: Colors.green,
+  unselectedItemColor: Colors.grey,
+  onTap: (index) {
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ExploreScreen()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CartScreen(items: [])), 
+      );
+    } else if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()), 
+      );
+    } else if (index == 4) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AccountScreen()),
+      );
+    }
+  },
+  items: const [
+    BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Shop'),
+    BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+    BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: 'Favorite'),
+    BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
+  ],
+),
+
     );
   }
 

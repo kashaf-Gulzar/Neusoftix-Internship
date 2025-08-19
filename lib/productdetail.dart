@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_project/cartitem.dart';
 import 'package:my_first_project/cartscreen.dart';
-import 'package:my_first_project/loginpage.dart';
-import 'package:my_first_project/loginscreen.dart';
 
 class ProductDetail extends StatefulWidget {
   final String image;
