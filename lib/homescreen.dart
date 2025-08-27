@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_project/accountscreen.dart';
+import 'package:my_first_project/cartitem.dart';
 import 'package:my_first_project/cartscreen.dart';
 import 'package:my_first_project/explorescreen.dart';
-import 'package:my_first_project/loginscreen.dart';
+import 'package:my_first_project/favouritescreen.dart';
 import 'package:my_first_project/productdetail.dart';
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -261,13 +262,16 @@ class _HomeScreenState extends State<Homescreen> {
       );
     } else if (index == 2) {
       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const CartScreen(items: [])), 
-      );
+  context,
+  MaterialPageRoute(
+    builder: (context) => CartScreen(items: CartItem.favourites),
+  ),
+);
+
     } else if (index == 3) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()), 
+        MaterialPageRoute(builder: (context) => const FavouriteScreen()), 
       );
     } else if (index == 4) {
       Navigator.push(

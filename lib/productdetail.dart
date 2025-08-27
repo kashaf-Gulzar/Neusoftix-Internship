@@ -24,6 +24,8 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
   int quantityCount = 1; 
+  bool isFavourite = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,8 +63,33 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
               ),
               const SizedBox(width: 8),
-              const Icon(Icons.favorite_border,
-                  color: Colors.grey, size: 28),
+
+IconButton(
+  icon: Icon(
+    isFavourite ? Icons.favorite : Icons.favorite_border,
+    color: isFavourite ? Colors.red : Colors.grey,
+  ),
+  onPressed: () {
+    setState(() {
+      isFavourite = !isFavourite;
+    });
+
+    if (isFavourite) {
+      CartItem.add(
+        CartItem(
+          image: widget.image,
+          name: widget.name,
+          quantity: widget.quantity,
+          price: double.parse(widget.price.replaceAll("\$", "")),
+          count: 1,
+        ),
+      );
+    } else {
+      CartItem.removeWhere((item) => item.name == widget.name);
+    }
+  },
+),
+
             ],
           ),
 
